@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserTest {
@@ -40,5 +40,14 @@ public class UserTest {
         assertNotNull(createdUser);
         assertEquals("test", createdUser.getUsername());
         assertEquals("test@test.com", createdUser.getEmail());
+    }
+    @Test
+    @DisplayName("Test deleting a user from the system")
+    void testDeleteUser() {
+        User user = new User();
+        user.setId(1L);
+        doNothing().when(userRepository).deleteById(user.getId());
+        siteUserService.deleteUser(user);
+        verify(userRepository, times(1)).deleteById(1L);
     }
 }
