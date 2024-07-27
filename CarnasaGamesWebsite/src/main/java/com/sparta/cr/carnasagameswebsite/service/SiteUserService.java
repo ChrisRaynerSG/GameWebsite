@@ -35,8 +35,11 @@ public class SiteUserService implements UserDetailsService {
     }
 
     public void updatePassword(User user, String newPassword) {
-        user.setPassword(bCryptPasswordEncoder.encode(newPassword));
-        userRepository.save(user);
+        if(validatePasswordFormat(newPassword)) {
+            user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+            userRepository.save(user);
+        }
+        //else throw new InvalidPasswordException(); (need to make exception)
     }
     public void updateEmail(User user, String newEmail) {
         user.setEmail(newEmail);
@@ -58,6 +61,14 @@ public class SiteUserService implements UserDetailsService {
     public boolean validateUserPasswordCombination(String username, String password) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
         return bCryptPasswordEncoder.matches(password, user.getPassword());
+    }
+
+    public boolean validatePasswordFormat(String password){
+        return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
+    }
+
+    public boolean validateEmailFormat(String email){
+        return email.matches("^([a-zA-Z0-9_\\-.]+)@([a-zA-Z0-9_\\-.]+)\\.([a-zA-Z]{2,5})$");
     }
 
     //todo new table to prevent user following someone more than once

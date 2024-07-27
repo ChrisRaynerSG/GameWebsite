@@ -7,6 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -14,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -136,4 +141,44 @@ public class UserTest {
         boolean actual = user.getProfileimage().equals("This is a test profile image2");
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("test that password entry must match password format")
+    void testPasswordFormatWrongReturnFalse(){
+        boolean expected = false;
+        String password = "Password";
+        boolean actual = siteUserService.validatePasswordFormat(password);
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("test that password entry must match password format")
+    void testPasswordFormatCorrectReturnTrue(){
+        boolean expected = true;
+        String password = "P@55w0rd";
+        boolean actual = siteUserService.validatePasswordFormat(password);
+        assertEquals(expected, actual);
+    }
+    @ParameterizedTest
+    @MethodSource()
+    @DisplayName("test that email entry must match email format")
+    void testEmailFormat(String email, boolean expected){
+        boolean actual = siteUserService.validateEmailFormat(email);
+        assertEquals(expected, actual);
+    }
+
+    public static Stream<Arguments> testEmailFormat(){
+        return Stream.of(
+                Arguments.of("test@test.com", true),
+                Arguments.of("test@test.org.uk",true),
+                Arguments.of("test@test", false),
+                Arguments.of("test.test.com", false),
+                Arguments.of("test@hotmail.co.uk", true),
+                Arguments.of("something.something@gmail.com", true),
+                Arguments.of("otheremail@something.fr", true),
+                Arguments.of("TEST@TEST.COM", true),
+                Arguments.of("TEST@TEST.C", false)
+        );
+    }
+
+
+
 }
