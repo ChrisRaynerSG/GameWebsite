@@ -29,9 +29,11 @@ public class SiteUserService implements UserDetailsService {
     public User createUser(User user) {
         return userRepository.save(user);
     }
+
     public void deleteUser(User user) {
         userRepository.deleteById(user.getId());
     }
+
     public void updatePassword(User user, String newPassword) {
         user.setPassword(bCryptPasswordEncoder.encode(newPassword));
         userRepository.save(user);
