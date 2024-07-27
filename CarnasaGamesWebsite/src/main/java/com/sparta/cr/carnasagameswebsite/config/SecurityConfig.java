@@ -24,7 +24,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/index","/","/login","/register").permitAll()
                 .requestMatchers("/auth/**").hasAnyRole("USER","ADMIN")

@@ -54,7 +54,7 @@ public class SiteUserService implements UserDetailsService {
     public void updateProfileImage(User user, MultipartFile newProfileImage) throws IOException, FileSizeLimitExceededException {
         if(newProfileImage != null && !newProfileImage.isEmpty()) {
             if(newProfileImage.getSize() > MAX_FILE_SIZE) {
-                throw new FileSizeLimitExceededException("Image file is larger than 2MB!", newProfileImage.getSize(), MAX_FILE_SIZE);
+                throw new FileSizeLimitExceededException("Image file is larger than " + MAX_FILE_SIZE +"MB!", newProfileImage.getSize(), MAX_FILE_SIZE);
             }
             String base64Image = Base64.getEncoder().encodeToString(newProfileImage.getBytes());
             user.setProfileimage(base64Image);

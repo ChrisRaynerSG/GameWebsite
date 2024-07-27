@@ -51,6 +51,16 @@ public class User {
     @Column(name = "profile_image", columnDefinition = "TEXT")
     private String profileimage;
 
+    public User(){
+
+    }
+    public User(String username, String email, String password, String roles){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public Long getId() {
         return id;
     }
