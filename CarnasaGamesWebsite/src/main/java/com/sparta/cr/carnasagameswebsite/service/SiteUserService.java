@@ -3,18 +3,24 @@ package com.sparta.cr.carnasagameswebsite.service;
 import com.sparta.cr.carnasagameswebsite.models.SecurityUser;
 import com.sparta.cr.carnasagameswebsite.models.User;
 import com.sparta.cr.carnasagameswebsite.repositories.UserRepository;
+import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 
 @Service
 public class SiteUserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private static final long MAX_FILE_SIZE = 2 * 1024 * 1024;
 
     @Autowired
     public SiteUserService(UserRepository userRepository) {
@@ -45,8 +51,14 @@ public class SiteUserService implements UserDetailsService {
         user.setEmail(newEmail);
         userRepository.save(user);
     }
-    public void updateProfileImage(User user, String newProfileImage) {
-        user.setProfileimage(newProfileImage);
+    public void updateProfileImage(User user, MultipartFile newProfileImage) throws IOException, FileSizeLimitExceededException {
+        if(newProfileImage != null && !newProfileImage.isEmpty()) {
+            if(newProfileImage.getSize() > MAX_FILE_SIZE) {
+                throw new FileSizeLimitExceededException("Image file is larger than 2MB!", newProfileImage.getSize(), MAX_FILE_SIZE);
+            }
+            String base64Image = Base64.getEncoder().encodeToString(newProfileImage.getBytes());
+            user.setProfileimage(base64Image);
+        }
         userRepository.save(user);
     }
     public void updateDescription(User user, String newDescription) {
@@ -57,6 +69,7 @@ public class SiteUserService implements UserDetailsService {
         user.setRoles("ROLE_" + role);
         userRepository.save(user);
     }
+
 
     public boolean validateUserPasswordCombination(String username, String password) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));

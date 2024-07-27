@@ -48,7 +48,7 @@ public class User {
     @Column(name = "DOB")
     private LocalDate birthdate;
 
-    @Column(name = "profile_image")
+    @Column(name = "profile_image", columnDefinition = "TEXT")
     private String profileimage;
 
     public Long getId() {

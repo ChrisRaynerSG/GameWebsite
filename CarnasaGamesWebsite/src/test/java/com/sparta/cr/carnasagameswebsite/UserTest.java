@@ -3,6 +3,7 @@ package com.sparta.cr.carnasagameswebsite;
 import com.sparta.cr.carnasagameswebsite.models.User;
 import com.sparta.cr.carnasagameswebsite.repositories.UserRepository;
 import com.sparta.cr.carnasagameswebsite.service.SiteUserService;
+import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,18 +11,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -129,18 +130,25 @@ public class UserTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("Test updating user profileImg will return new profile image when getProfileImage is called")
-    void testUpdateUserProfileImg() {
-        boolean expected = true;
+    @DisplayName("test update profile image with a valid image")
+    void testUpdateProfileImage() throws IOException {
         User user = new User();
-        user.setId(1L);
-        user.setProfileimage("This is a test profile image");
-        when(userRepository.save(user)).thenReturn(user);
-        siteUserService.updateProfileImage(user, "This is a test profile image2");
+        MultipartFile file = new MockMultipartFile("file", "test.jpg", "image/jpeg", new byte[1024]);
+        siteUserService.updateProfileImage(user, file);
+
         verify(userRepository, times(1)).save(user);
-        boolean actual = user.getProfileimage().equals("This is a test profile image2");
-        assertEquals(expected, actual);
+        assertNotNull(user.getProfileimage());
     }
+    @Test
+    @DisplayName("test update profile image with too large image")
+    void testUpdateProfileImageTooLarge(){
+        User user = new User();
+        MultipartFile file = new MockMultipartFile("file", "image.jpg", "image/jpeg", new byte[3*1024*1024]);
+        assertThrows(FileSizeLimitExceededException.class, () -> siteUserService.updateProfileImage(user, file));
+        verify(userRepository, never()).save(user);
+    }
+
+
     @Test
     @DisplayName("test that password entry must match password format")
     void testPasswordFormatWrongReturnFalse(){
