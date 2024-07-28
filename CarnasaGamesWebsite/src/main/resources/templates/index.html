@@ -18,7 +18,7 @@
             color: #fff;
         }
         .navbar {
-            background-color: orange;
+            background-color: #FF6600;
         }
         .card {
             background-color: rgba(255, 255, 255, 0.8);
@@ -35,18 +35,27 @@
         .footer a {
             color: white;
         }
+        .footer .search-form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .footer .search-form .btn {
+            margin: 3px 0 3px 0;
+        }
     </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" height="40"></a>
-    <form class="form-inline my-2 my-lg-0 ml-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search games" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <div class="ml-3">
+    <a class="navbar-brand" href="#"><img src="/images/site-logo.png" alt="Logo" height="40"></a>
+    <div class="collapse navbar-collapse justify-content-center">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search games" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="ml-auto">
         <a href="#" class="btn btn-outline-light">Login</a>
         <a href="#" class="btn btn-outline-light">Register</a>
     </div>
@@ -92,7 +101,7 @@
 <footer class="footer text-center mt-auto">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3 mx-auto">
                 <h5>About Us</h5>
                 <ul class="list-unstyled">
                     <li><a href="#">FAQ</a></li>
@@ -100,14 +109,14 @@
                     <li><a href="#">Copyright Information</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 mx-auto">
                 <h5>Contact</h5>
                 <ul class="list-unstyled">
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Support</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 mx-auto">
                 <h5>Follow Us</h5>
                 <ul class="list-unstyled">
                     <li><a href="#">Facebook</a></li>
@@ -115,6 +124,15 @@
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">GitHub</a></li>
                 </ul>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <h5>Search Website</h5>
+                <form class="form-inline search-form justify-content-center">
+                    <input class="form-control mr-2 mb-2 mb-md-0" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Go!</button>
+                </form>
             </div>
         </div>
     </div>
