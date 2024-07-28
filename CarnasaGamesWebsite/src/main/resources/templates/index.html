@@ -3,76 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameZone - Welcome</title>
+    <title>Mini Games</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
         body {
-            background-color: #000;
+            background: url('/images/site-side-banner.jpeg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
         }
-        .hero-section {
-            background-color: #ff6600;
-            color: #fff;
-            padding: 100px 0;
-            text-align: center;
+        .navbar {
+            background-color: orange;
         }
-        .hero-section h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        .hero-section p {
-            font-size: 1.25rem;
-        }
-        .login-register-container {
-            background-color: #fff;
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
             color: #000;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            margin: 0 auto;
-            margin-top: -100px;
         }
-        .btn-custom {
-            background-color: #ff6600;
-            color: #fff;
-            border: none;
+        .container {
+            flex: 1;
         }
-        .btn-custom:hover {
-            background-color: #e65c00;
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 20px 0;
         }
-        .btn-outline-custom {
-            border-color: #ff6600;
-            color: #ff6600;
-        }
-        .btn-outline-custom:hover {
-            background-color: #ff6600;
-            color: #fff;
+        .footer a {
+            color: white;
         }
     </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <h1>Welcome to GameZone</h1>
-        <p>Login or register to access exclusive games and content.</p>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" height="40"></a>
+    <form class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search games" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="ml-3">
+        <a href="#" class="btn btn-outline-light">Login</a>
+        <a href="#" class="btn btn-outline-light">Register</a>
     </div>
-</section>
+</nav>
 
-<!-- Login/Register Container -->
-<div class="container">
-    <div class="login-register-container">
-        <h2 class="text-center">Get Started</h2>
-        <div class="text-center">
-            <a href="/login" class="btn btn-custom btn-lg">Login</a>
-            <a href="/register" class="btn btn-outline-custom btn-lg ml-3">Register</a>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="game-image-1.jpg" class="card-img-top" alt="Game 1">
+                <div class="card-body">
+                    <h5 class="card-title">Game Title 1</h5>
+                    <p class="card-text">Short description of the game.</p>
+                    <a href="#" class="btn btn-primary">Play Now</a>
+                </div>
+            </div>
         </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="game-image-2.jpg" class="card-img-top" alt="Game 2">
+                <div class="card-body">
+                    <h5 class="card-title">Game Title 2</h5>
+                    <p class="card-text">Short description of the game.</p>
+                    <a href="#" class="btn btn-primary">Play Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="game-image-3.jpg" class="card-img-top" alt="Game 3">
+                <div class="card-body">
+                    <h5 class="card-title">Game Title 3</h5>
+                    <p class="card-text">Short description of the game.</p>
+                    <a href="#" class="btn btn-primary">Play Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more cards as needed -->
     </div>
 </div>
 
-<!-- Bootstrap JS and dependencies -->
+<!-- Footer -->
+<footer class="footer text-center mt-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Copyright Information</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -85,11 +85,7 @@ public class SiteUserService implements UserDetailsService {
     }
 
     //todo new table to prevent user following someone more than once
-//    public void addFollower(User user){
-//        user.setFollowers(user.getFollowers() + 1);
-//        userRepository.save(user);
-//    }
-//    public void removeFollower(User user){
-//        user.setFollowers(user.getFollowers() - 1);
-//    }
+    // new follower methods
+    // other update methods?
+
 }
