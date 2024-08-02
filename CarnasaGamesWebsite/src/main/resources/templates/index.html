@@ -1,65 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Games</title>
+    <title>Carnasa Games - Mini games & more!</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            background: url('/images/site-side-banner.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
-        .navbar {
-            background-color: #FF6600;
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #000;
-        }
-        .container {
-            flex: 1;
-        }
-        .footer {
-            background-color: black;
-            color: white;
-            padding: 20px 0;
-        }
-        .footer a {
-            color: white;
-        }
-        .footer .search-form {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        .footer .search-form .btn {
-            margin: 3px 0 3px 0;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/landingStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/navbarStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/footerStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/homeStyles.css}">
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#"><img src="/images/site-logo.png" alt="Logo" height="40"></a>
-    <div class="collapse navbar-collapse justify-content-center">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search games" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    <div class="ml-auto">
-        <a href="#" class="btn btn-outline-light">Login</a>
-        <a href="#" class="btn btn-outline-light">Register</a>
-    </div>
-</nav>
+<nav th:replace="~{fragments/navbar}"></nav>
 
 <div class="container mt-5">
     <div class="row">
@@ -93,7 +47,6 @@
                 </div>
             </div>
         </div>
-        <!-- Add more cards as needed -->
     </div>
 </div>
 

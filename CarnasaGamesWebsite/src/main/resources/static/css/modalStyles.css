@@ -1,0 +1,46 @@
+.dark-modal .modal-content {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* White text */
+}
+
+.dark-modal .modal-header {
+    border-bottom: 1px solid #454d55;
+}
+
+.dark-modal .modal-footer {
+    border-top: 1px solid #454d55;
+}
+
+.dark-modal .modal-header .close {
+    color: #ffffff;
+}
+
+.dark-modal .modal-body .form-group label {
+    color: #ffffff;
+}
+
+.dark-modal .form-control {
+    background-color: #495057; /* Slightly lighter dark background for input */
+    color: #ffffff;
+    border: 1px solid #6c757d;
+}
+
+.dark-modal .form-control:focus {
+    background-color: #495057;
+    border-color: #adb5bd;
+}
+
+.dark-modal .btn-primary {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+.dark-modal .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: left;
+}

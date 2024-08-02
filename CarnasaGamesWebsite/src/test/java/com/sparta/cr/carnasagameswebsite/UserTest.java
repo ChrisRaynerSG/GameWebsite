@@ -117,7 +117,7 @@ public class UserTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("Test updating user description will return nerw description when getDescription called")
+    @DisplayName("Test updating user description will return new description when getDescription called")
     void testUpdateUserDescription() {
         boolean expected = true;
         User user = new User();
