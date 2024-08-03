@@ -88,7 +88,6 @@ public class SiteUserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-
     public boolean validateUserPasswordCombination(String username, String password) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
         return passwordEncoder.matches(password, user.getPassword());
