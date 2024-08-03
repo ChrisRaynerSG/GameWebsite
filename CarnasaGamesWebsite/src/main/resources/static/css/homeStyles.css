@@ -1,8 +1,9 @@
 html, body {
     height: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+    /*display: flex;*/
+    /*flex-direction: column;*/
 }
 body {
     background: url('/images/site-side-banner.jpeg') no-repeat center center fixed;
