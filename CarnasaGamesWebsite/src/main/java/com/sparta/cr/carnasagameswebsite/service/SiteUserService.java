@@ -9,23 +9,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Base64;
 
 @Service
 public class SiteUserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private static final long MAX_FILE_SIZE = 2 * 1024 * 1024;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SiteUserService(UserRepository userRepository) {
+    public SiteUserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -33,6 +35,14 @@ public class SiteUserService implements UserDetailsService {
         return userRepository.findByUsername(username).map(SecurityUser::new).orElseThrow(() -> new UsernameNotFoundException(username));
     }
     public User createUser(User user) {
+        if(userRepository.findByUsername(user.getUsername()).isPresent()) {
+            return null;
+        }
+        if(!validatePasswordFormat(user.getPassword())) {
+            return null;
+        }
+        user.setRoles("ROLE_USER");
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -42,15 +52,23 @@ public class SiteUserService implements UserDetailsService {
 
     public void updatePassword(User user, String newPassword) {
         if(validatePasswordFormat(newPassword)) {
-            user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+            user.setPassword(passwordEncoder.encode(newPassword));
             userRepository.save(user);
         }
         //else throw new InvalidPasswordException(); (need to make exception)
     }
     public void updateEmail(User user, String newEmail) {
-        user.setEmail(newEmail);
+        if(validateEmailFormat(newEmail)) {
+            user.setEmail(newEmail);
+        }
         userRepository.save(user);
     }
+
+    public void updateUserDoB(User user, LocalDate dob) {
+        user.setBirthdate(dob);
+        userRepository.save(user);
+    }
+
     public void updateProfileImage(User user, MultipartFile newProfileImage) throws IOException, FileSizeLimitExceededException {
         if(newProfileImage != null && !newProfileImage.isEmpty()) {
             if(newProfileImage.getSize() > MAX_FILE_SIZE) {
@@ -73,7 +91,7 @@ public class SiteUserService implements UserDetailsService {
 
     public boolean validateUserPasswordCombination(String username, String password) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
-        return bCryptPasswordEncoder.matches(password, user.getPassword());
+        return passwordEncoder.matches(password, user.getPassword());
     }
 
     public boolean validatePasswordFormat(String password){

@@ -31,3 +31,26 @@
         </li>
     </ul>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                fetch('/logout', {
+                    method: 'GET'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            console.error('Logout failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Network error:', error);
+                    });
+            });
+        }
+    });
+</script>

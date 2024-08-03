@@ -68,6 +68,7 @@
     text-decoration: none;
 }
 
-a.nav-link {
+.nav-link {
     cursor: pointer;
+    color: white;
 }
