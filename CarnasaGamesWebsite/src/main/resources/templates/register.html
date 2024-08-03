@@ -10,14 +10,41 @@
     <link rel="stylesheet" th:href="@{/css/navbarStyles.css}">
     <link rel="stylesheet" th:href="@{/css/footerStyles.css}">
     <link rel="stylesheet" th:href="@{/css/homeStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/registerStyles.css}">
 </head>
 <body>
 
 <nav th:replace="~{fragments/navbar}"></nav>
 
 <div class="container mt-5">
+    <div class="register-form">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Register</h2>
+            </div>
+            <div class="card-body">
+                <form th:action="post" th:object="${user}">
+                    <input type="hidden">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Enter password">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-orange">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
 <footer th:replace="~{fragments/footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
