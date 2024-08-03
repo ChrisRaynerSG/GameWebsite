@@ -16,37 +16,170 @@
 <nav th:replace="~{fragments/navbar}"></nav>
 
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="game-image-1.jpg" class="card-img-top" alt="Game 1">
-                <div class="card-body">
-                    <h5 class="card-title">Game Title 1</h5>
-                    <p class="card-text">Short description of the game.</p>
-                    <a href="#" class="btn btn-primary">Play Now</a>
+    <h2 class="mb-4">Top Picks</h2>
+    <div id="topPicksCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/numbers.jpg" class="card-img-top" alt="Game 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Title 1</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/person-sword-2.webp" class="card-img-top" alt="Game 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Title 2</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="game-image-3.jpg" class="card-img-top" alt="Game 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Title 3</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="game-image-2.jpg" class="card-img-top" alt="Game 2">
-                <div class="card-body">
-                    <h5 class="card-title">Game Title 2</h5>
-                    <p class="card-text">Short description of the game.</p>
-                    <a href="#" class="btn btn-primary">Play Now</a>
+        <a class="carousel-control-prev" href="#topPicksCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#topPicksCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <h2 class="mb-4 mt-5">Genres</h2>
+    <div id="genresCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/action.jpg" class="card-img-top" alt="Action">
+                            <div class="card-body">
+                                <h5 class="card-title">Action</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/puzzle.jpg" class="card-img-top" alt="Puzzle">
+                            <div class="card-body">
+                                <h5 class="card-title">Puzzle</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/numbers.jpg" class="card-img-top" alt="Numbers">
+                            <div class="card-body">
+                                <h5 class="card-title">Numbers</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/strategy.jpg" class="card-img-top" alt="Strategy">
+                            <div class="card-body">
+                                <h5 class="card-title">Strategy</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/fighting.jpg" class="card-img-top" alt="Fighting">
+                            <div class="card-body">
+                                <h5 class="card-title">Fighting</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/sport.jpg" class="card-img-top" alt="Sport">
+                            <div class="card-body">
+                                <h5 class="card-title">Sport</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="game-image-3.jpg" class="card-img-top" alt="Game 3">
-                <div class="card-body">
-                    <h5 class="card-title">Game Title 3</h5>
-                    <p class="card-text">Short description of the game.</p>
-                    <a href="#" class="btn btn-primary">Play Now</a>
+        <a class="carousel-control-prev" href="#genresCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#genresCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <h2 class="mb-4 mt-5">Featured Creator</h2>
+    <div id="featuredCreatorCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/creator-game-1.jpg" class="card-img-top" alt="Creator Game 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Creator Game 1</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/creator-game-2.jpg" class="card-img-top" alt="Creator Game 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Creator Game 2</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mb-4">
+                        <div class="card">
+                            <img src="/images/creator-game-3.jpg" class="card-img-top" alt="Creator Game 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Creator Game 3</h5>
+                                <p class="card-text">Short description of the game.</p>
+                                <a href="#" class="btn btn-primary">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <a class="carousel-control-prev" href="#featuredCreatorCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#featuredCreatorCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </div>
 

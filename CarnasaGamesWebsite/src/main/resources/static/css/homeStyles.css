@@ -31,3 +31,13 @@ body {
 .footer .search-form .btn {
     margin: 3px 0 3px 0;
 }
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+.carousel-control-prev {
+    left: -5%;
+}
+.carousel-control-next {
+    right: -5%;
+}
