@@ -1,5 +1,5 @@
 .register-form {
-    max-width: 500px;
+    max-width: 700px;
     margin: auto auto 40px;
     background-color: #fff;
     padding: 20px;
@@ -34,4 +34,41 @@
 
 .btn-outline-secondary:hover .fa-eye, .btn-outline-secondary:hover .fa-eye-slash {
     color: white;
+}
+
+body {
+    background: white;
+    color: #fff;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+.container {
+    flex: 1;
+}
+.footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+}
+.footer a {
+    color: white;
+}
+.footer .search-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+.footer .search-form .btn {
+    margin: 3px 0 3px 0;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+.carousel-control-prev {
+    left: -5%;
+}
+.carousel-control-next {
+    right: -5%;
 }

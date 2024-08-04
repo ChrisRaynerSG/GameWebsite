@@ -4,21 +4,11 @@
     text-align: center;
     color: #ffffff;
     border-top: 1px solid #343a40;
-    margin-top: auto;
 }
 
 .footer p {
     margin: 0;
     font-size: 14px;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #121212;
-    color: #ffffff;
 }
 
 body > .container {
