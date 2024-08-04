@@ -51,6 +51,9 @@ public class User {
     @Column(name = "profile_image", columnDefinition = "TEXT")
     private String profileimage;
 
+    @Column(name = "phone_number", unique = true)
+    private String phonenumber;
+
     public User(){
 
     }
@@ -154,6 +157,13 @@ public class User {
 
     public void setProfileimage(String profileimage) {
         this.profileimage = profileimage;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     @Override
